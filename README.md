@@ -3,21 +3,6 @@
 Sistema de delivery fullstack para um restaurante temático japonês-americano, desenvolvido com **Java puro no backend** e **HTML/CSS/JavaScript no frontend**, com integração via HTTP local. O projeto aplica na prática estruturas de dados clássicas (Pilha e Fila) e algoritmos de ordenação (Bubble Sort e Quick Sort), além de expor uma API REST simples para comunicação entre as camadas.
 
 ---
-
-## 📋 Sumário
-
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Arquitetura](#arquitetura)
-- [Estruturas de Dados](#estruturas-de-dados)
-- [Algoritmos de Ordenação](#algoritmos-de-ordenação)
-- [API REST](#api-rest)
-- [Como Executar](#como-executar)
-- [Estrutura de Pastas](#estrutura-de-pastas)
-- [Tecnologias](#tecnologias)
-
----
-
 ## Sobre o Projeto
 
 O **OrderStack System** simula o fluxo completo de um delivery: o cliente navega pelo cardápio, monta o carrinho, finaliza o pedido e a cozinha recebe a fila de preparação. Tudo isso com fins educacionais — cada estrutura de dados e algoritmo é visível e mensurável durante o uso.
