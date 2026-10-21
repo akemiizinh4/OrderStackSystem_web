@@ -1,0 +1,10 @@
+# Configuracao do backend no Render (Blueprint).
+# No Render: New > Blueprint > escolha este repositorio.
+services:
+  - type: web
+    name: orderstack-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
