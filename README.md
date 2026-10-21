@@ -134,11 +134,11 @@ O console será iniciado e o servidor HTTP subirá automaticamente na porta `808
 
 ### 3. Abrir o frontend
 
-Abra o arquivo `frontend/projeto_japanenglish/index.html` diretamente no navegador ou sirva com qualquer servidor estático:
+Abra o arquivo `index.html` (na raiz do projeto) diretamente no navegador ou sirva com qualquer servidor estático:
 
 ```bash
 # Exemplo com Python
-cd frontend/projeto_japanenglish
+# Na raiz do projeto
 python3 -m http.server 3000
 ```
 
@@ -154,18 +154,18 @@ O projeto é publicado em duas partes:
 
 | Parte    | Onde fica      | Como é publicado |
 |----------|----------------|------------------|
-| Frontend | GitHub Pages   | Automático a cada push na `main` (`.github/workflows/pages.yml`) |
+| Frontend | GitHub Pages   | Publicado direto da raiz da branch `main` |
 | Backend  | Render         | Docker (`Dockerfile` + `render.yaml`), rodando em modo `--servidor` |
 
 **Backend no Render**
 1. Crie uma conta em [render.com](https://render.com) entrando com o GitHub.
 2. Clique em **New → Blueprint** e escolha este repositório. O Render lê o `render.yaml` e cria o serviço `orderstack-backend`.
 3. Ao terminar, copie o endereço do serviço (algo como `https://orderstack-backend.onrender.com`).
-4. No `frontend/projeto_japanenglish/script.js`, troque `https://SEU-BACKEND.onrender.com` pelo endereço copiado e faça push.
+4. No `script.js`, troque `https://SEU-BACKEND.onrender.com` pelo endereço copiado e faça push.
 
 **Frontend no GitHub Pages**
-1. No GitHub, vá em **Settings → Pages** e em **Source** escolha **GitHub Actions**.
-2. A cada push na `main` com mudanças em `frontend/`, o site é publicado sozinho. O endereço aparece em **Settings → Pages**.
+1. No GitHub, vá em **Settings → Pages**. Em **Source** escolha **Deploy from a branch**, depois a branch **main** e a pasta **/ (root)**, e clique em **Save**.
+2. A cada push na `main`, o site é publicado sozinho em 1 ou 2 minutos. O endereço aparece em **Settings → Pages**.
 
 > **Plano gratuito do Render:** o servidor "dorme" após cerca de 15 minutos sem uso, e a primeira requisição pode levar até 1 minuto para acordá-lo. Os pedidos ficam apenas na memória e são perdidos quando o servidor reinicia.
 >
@@ -198,19 +198,17 @@ OrderStackSystem_web/
 │       ├── PedidoEntregueHandler.java
 │       ├── PedidoHandler.java
 │       └── ServidorHttp.java
-├── frontend/
-│   └── projeto_japanenglish/
-│       ├── index.html
-│       ├── style.css
-│       ├── script.js                  # Lógica, pilha JS, ordenação, API
-│       ├── manifest.json              # PWA manifest
-│       ├── sw.js                      # Service Worker
-│       └── Imagens/
-│           ├── LOGO.png
-│           └── NARUTO.jpg
-├── .github/workflows/pages.yml        # Publica o frontend no GitHub Pages
+├── index.html                         # Página do site (GitHub Pages)
+├── style.css
+├── script.js                          # Lógica, pilha JS, ordenação, API
+├── manifest.json                      # PWA manifest
+├── sw.js                              # Service Worker
+├── Imagens/
+│   ├── LOGO.png
+│   └── NARUTO.jpg
 ├── Dockerfile                         # Imagem do backend para o Render
 ├── render.yaml                        # Configuração do serviço no Render
+├── .nojekyll                          # Pages publica os arquivos sem processar
 └── .gitignore
 ```
 
