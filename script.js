@@ -3,7 +3,7 @@
 // Depois de criar o serviço no Render, troque o endereço abaixo pelo seu.
 const API_URL = (['localhost', '127.0.0.1', ''].includes(location.hostname))
     ? 'http://localhost:8080'
-    : 'https://SEU-BACKEND.onrender.com';
+    : 'https://orderstack-backend-xdlw.onrender.com';
 
 // --- DADOS PERSISTENTES (LOCAL STORAGE) ---
 let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
