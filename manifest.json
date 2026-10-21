@@ -1,0 +1,21 @@
+{
+  "name": "Japan English Delivery",
+  "short_name": "JEDelivery",
+  "description": "O melhor da culinária Japonesa e Americana no conforto da sua casa.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#1a2a44",
+  "theme_color": "#e63946",
+  "icons": [
+    {
+      "src": "Imagens/LOGO.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Imagens/LOGO.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

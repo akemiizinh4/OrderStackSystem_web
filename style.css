@@ -1,0 +1,377 @@
+:root {
+    --azul-escuro: #1a2a44;
+    --vermelho: #e63946;
+    --vermelho-dark: #c12e3a;
+    --branco: #ffffff;
+    --cinza-claro: #f8f9fa;
+    --texto: #333;
+    --borda: #eee;
+}
+
+/* TEMA ESCURO (DARK MODE) */
+[data-theme="dark"] {
+    --azul-escuro: #0f1929;
+    --vermelho: #ff4d5a;
+    --branco: #1e1e1e;
+    --cinza-claro: #121212;
+    --texto: #f1f1f1;
+    --borda: #333;
+}
+
+body {
+    font-family: 'Aptos', sans-serif;
+    margin: 0;
+    background-color: var(--cinza-claro);
+    color: var(--texto);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#btn-theme {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+#btn-theme:hover {
+    transform: scale(1.1);
+}
+
+header {
+    background-color: var(--azul-escuro);
+    color: white;
+    padding: 10px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    flex-wrap: wrap; 
+    gap: 15px;
+}
+
+.logo-container h1 { 
+    margin: 0; 
+    font-size: clamp(1.2rem, 4vw, 1.5rem); 
+}
+.logo-container img { height: 60px; }
+
+nav {
+    display: flex;
+    justify-content: center;
+    order: 2;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+nav a:hover { color: var(--vermelho); }
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Animação Suave ao trocar de seção */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+section { display: none; }
+section.active { 
+    display: block; 
+    animation: fadeIn 0.4s ease-out; 
+}
+
+/* Esconde o botão flutuante no Desktop */
+.btn-flutuante {
+    display: none; 
+}
+
+@media (max-width: 850px) {
+    header {
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav {
+        order: 3;
+        width: 100%;
+    }
+
+    .header-right {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Esconde o carrinho do Header no Celular e mostra o Flutuante */
+    .btn-carrinho-topo { display: none !important; }
+    
+    .btn-flutuante {
+        display: flex;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--vermelho);
+        color: white;
+        border: none;
+        padding: 15px 20px;
+        border-radius: 50px;
+        font-size: 16px;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        cursor: pointer;
+        z-index: 9999;
+        align-items: center;
+        gap: 10px;
+        transition: transform 0.3s;
+    }
+    
+    .btn-flutuante:active { transform: scale(0.95); }
+}
+
+.btn-cadastro-topo {
+    background-color: var(--vermelho);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+    text-transform: uppercase;
+}
+
+.btn-cadastro-topo:hover {
+    background-color: var(--vermelho-dark);
+    transform: scale(1.05);
+}
+
+.btn-carrinho-topo {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: var(--branco);
+    border-radius: 12px;
+    min-height: 80vh;
+}
+
+/* Alterado para var(--texto) para as letras ficarem claras no Modo Noturno */
+.categoria-titulo {
+    border-left: 5px solid var(--vermelho);
+    padding-left: 15px;
+    margin: 40px 0 20px;
+    color: var(--texto);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card-produto {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    color: var(--texto);
+    border-radius: 10px;
+    padding: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-produto:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-color: var(--vermelho);
+}
+
+.preco { color: var(--vermelho); font-weight: bold; font-size: 1.2rem; }
+
+/* Botoes de Quantidade no Carrinho */
+.btn-qtd {
+    background: var(--azul-escuro);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-qtd:active { transform: scale(0.9); }
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+    background: var(--branco);
+    color: var(--texto);
+    width: 95%; 
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+.form-row { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 10px; 
+    flex-wrap: wrap; 
+}
+
+.form-row input { flex: 1 1 200px; }
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+    background: var(--branco);
+    color: var(--texto);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.btn-acao {
+    background-color: var(--vermelho);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.btn-selecao {
+    padding: 10px;
+    border: 1px solid var(--azul-escuro);
+    background: var(--branco);
+    color: var(--azul-escuro);
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+    font-weight: bold;
+    text-align: center;
+    min-width: 120px;
+}
+
+.btn-selecao.active {
+    background: var(--azul-escuro);
+    color: white;
+}
+
+.cartao-dados, #form-outro-endereco { background: var(--cinza-claro); padding: 15px; border-radius: 8px; margin-top: 10px; }
+.progress-container { background: #ddd; height: 12px; border-radius: 6px; margin: 20px 0; overflow: hidden; }
+.progress-bar { width: 5%; height: 100%; background: #4CAF50; transition: width 1s ease-in-out; }
+
+.user-icon {
+    background: white;
+    color: var(--azul-escuro);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+
+.mapa-ficticio {
+    min-height: 180px;
+    width: 100%;
+    position: relative;
+    background: #dff9fb;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #b2bec3;
+    margin-top: 15px;
+}
+.rua-horizontal { position: absolute; width: 100%; height: 30px; background: #636e72; display: flex; align-items: center; }
+.rua-vertical { position: absolute; top: 0; width: 30px; height: 100%; background: #636e72; display: flex; justify-content: center; }
+.faixa-pedestre { width: 100%; border-top: 2px dashed #fff; }
+.faixa-pedestre-v { height: 100%; border-left: 2px dashed #fff; }
+.ponto-mapa { position: absolute; font-size: 28px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+.entregador { position: absolute; font-size: 24px; transition: all 1.5s linear; z-index: 10; }
+
+/* --- Estilos para os Toasts (Notificações Flutuantes) --- */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    background-color: #333;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.1s ease;
+    text-align: center;
+}
+
+.toast.mostrar { opacity: 1; transform: translateY(0); }
+.toast.erro { background-color: var(--vermelho); }
+.toast.sucesso { background-color: #4CAF50; }
+.toast.aviso { background-color: #f39c12; }
